@@ -42,3 +42,4 @@ export function renderListWithTemplate(template, parentElement, list, position =
 export function addProductToCart(product) {
   2  // code here3
 };
+
