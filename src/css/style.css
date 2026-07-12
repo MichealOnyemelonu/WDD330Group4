@@ -257,7 +257,29 @@ button {
   }
 }
 
+@media screen and (max-width: 499px) {
+
+  .product-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .mission p {
+    width: 90%;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  header {
+    padding: 1rem;
+  }
+
+}
+
 footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
