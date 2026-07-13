@@ -131,6 +131,26 @@ button {
   fill: gray;
 }
 
+/* Adding the count_cart icon here */
+
+
+.cart__count {
+  position: absolute;
+  top: -0.6em;
+  right: -0.8em;
+  background-color: var(--tertiary-color);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.7em;
+  min-width: 1.2em;
+  height: 1.2em;
+  line-height: 1.2em;
+  text-align: center;
+}
+
+
+
+
 /* End cart icon styles */
 
 .mission {
