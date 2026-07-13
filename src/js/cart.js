@@ -25,4 +25,15 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+
+function updateCartCount() {
+  const cartItems = getLocalStorage("so-cart");
+  const count = cartItems.length;
+  const countBadge = document.querySelector(".cart__count");
+  countBadge.textContent = count;
+}
+
+
 renderCartContents();
+
+updateCartCount();
