@@ -261,3 +261,15 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+/* Discount flag */
+
+.discount-flag {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 8px 12px;
+  background-color: #dc2626;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+}
