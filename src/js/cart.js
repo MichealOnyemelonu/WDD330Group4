@@ -1,8 +1,10 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 
+loadHeaderFooter();
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
+  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
 
   if (cartItems.length === 0) {
     document.querySelector(".product-list").innerHTML =
@@ -11,14 +13,10 @@ function renderCartContents() {
     return;
   }
 
-  const htmlItems = cartItems.map((item) =>
-    cartItemTemplate(item)
-  );
+  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
 
-  document.querySelector(".product-list").innerHTML =
-    htmlItems.join("");
+  document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
-
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
