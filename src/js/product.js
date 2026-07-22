@@ -1,25 +1,28 @@
 import { getParam, addProductToCart } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
-import ProductDetails from "./productDetails.mjs";
+import ProductDetails from "./ProductDetails.mjs";
 
-const dataSource = new ProductData("tents");
 const productID = getParam("product");
 
+// Create the data source (no category needed)
+const dataSource = new ProductData();
 
-
-
+// Create the product details object
 const product = new ProductDetails(productID, dataSource);
+
+// Render the product details
 product.init();
 
-// add to cart button event handler
+// Add to cart button event handler
 async function addToCartHandler(e) {
-  const selectProduct = 
-    await dataSource.findProductById(e.target.dataset.id);
-  
-  addProductToCart(product); 
+  const selectedProduct = await dataSource.findProductById(
+    e.target.dataset.id
+  );
+
+  addProductToCart(selectedProduct);
 }
 
-// add listener to Add to Cart button
+// Add listener to Add to Cart button
 document
-   .getElementById("addToCart")
-   .addEventListener("click", addToCartHandler);
+  .getElementById("addToCart")
+  .addEventListener("click", addToCartHandler);
