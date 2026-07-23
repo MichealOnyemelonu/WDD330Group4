@@ -1,16 +1,11 @@
+import { loadHeaderFooter } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
 
+loadHeaderFooter();
 
-// creating an instance of the "import ProductData from productData.mjs" 
-const dataSource = new ProductData();
+const dataSource = new ProductData("tents");
+const element = document.querySelector(".product-list");
+const productList = new ProductList("Tents", dataSource, element);
 
-const ListElement = document.querySelector(".product-list");
-
-const productlist = new ProductList (
-    "tents",
-    dataSource,
-    ListElement
-);
-
-productlist.init();
+productList.init();
