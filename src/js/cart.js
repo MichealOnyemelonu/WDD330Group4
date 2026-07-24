@@ -35,4 +35,14 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+function calculateTotalPrice() {
+  const cartItems = getLocalStorage("so-cart") || [];
+  const totalPrice = cartItems.reduce((total, item) => {
+    return total + item.FinalPrice;
+  }, 0);
+
+  document.getElementById("total-price").textContent = totalPrice.toFixed(2);
+} 
+
 renderCartContents();
+calculateTotalPrice();  
