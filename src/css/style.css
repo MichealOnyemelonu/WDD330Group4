@@ -256,6 +256,12 @@ button {
   font-size: 1.5em;
 }
 
+.discount-detail {
+  font-size: small;
+  text-decoration: line-through;
+  color: #777;
+}
+
 /* Start cart list card styles */
 .cart-card {
   display: grid;
