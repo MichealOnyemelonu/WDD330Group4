@@ -49,3 +49,18 @@ function productDetailsTemplate(product) {
 
   document.getElementById("add-to-cart").dataset.id = product.Id;
 }
+
+export function discountPercentage(product) {
+  const retailPrice = product.SuggestedRetailPrice;
+  const finalPrice = product.FinalPrice;
+
+  if (!retailPrice || retailPrice <= 0) {
+    return 0;
+  }
+
+  if (finalPrice >= retailPrice) {
+    return 0;
+  }
+
+  return Math.floor(((retailPrice - finalPrice) / retailPrice) * 100);
+}

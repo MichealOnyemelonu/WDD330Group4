@@ -210,12 +210,21 @@ button {
   margin: 0.5em 0;
 }
 
+.product-card h2 {
+  padding-left: 2px;
+}
+
 .card__brand {
   font-size: var(--small-font);
 }
 
 .card__name {
   font-size: 1em;
+}
+
+.product-card__discount {
+  font-size: small;
+  color: rgb(232, 0, 0);
 }
 
 /* End product list card */
