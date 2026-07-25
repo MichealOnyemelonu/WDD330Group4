@@ -12,4 +12,4 @@ await productList.init();
 
 const alerts = new Alert();
 await alerts.loadAndRender();
-
+ 
