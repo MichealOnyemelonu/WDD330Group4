@@ -13,6 +13,7 @@ export default class ProductDetails {
     this.renderProductDetails();
 
     document
+      .getElementById("addToCart")
       .getElementById("add-to-cart")
       .addEventListener("click", this.addProductToCart.bind(this));
   }
@@ -29,6 +30,11 @@ export default class ProductDetails {
 }
 
 function productDetailsTemplate(product) {
+  document.querySelector("h2").textContent = product.Brand.Name;
+  document.querySelector("h3").textContent = product.NameWithoutBrand;
+
+  const productImage = document.getElementById("productImage");
+  productImage.src = product.Images.PrimaryLarge;
   document.querySelector("h2").textContent =
     product.Category.charAt(0).toUpperCase() + product.Category.slice(1);
   document.querySelector("#p-brand").textContent = product.Brand.Name;
@@ -42,6 +48,16 @@ function productDetailsTemplate(product) {
     currency: "EUR",
   }).format(Number(product.FinalPrice) * 0.85);
 
+  document.getElementById("productPrice").textContent =
+    `$${product.FinalPrice}`;
+
+  document.getElementById("productColor").textContent =
+    product.Colors?.[0]?.ColorName || "N/A";
+
+  document.getElementById("productDesc").innerHTML =
+    product.DescriptionHtmlSimple;
+
+  document.getElementById("addToCart").dataset.id = product.Id;
   document.getElementById('productPrice').textContent = product.FinalPrice;
   
     const discountPercent = Math.round(
