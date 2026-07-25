@@ -1,3 +1,4 @@
+
 const form = document.getElementById("newsletterForm");
 
 if (form) {
