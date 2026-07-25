@@ -321,6 +321,42 @@ footer {
   padding: 1em;
 }
 
+/* Discount flag */
+
+.discount-flag {
+  display: inline-block;
+  margin: 10px 0;
+  padding: 8px 12px;
+  background-color: #dc2626;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+}
+
+/* newsletter */
+
+.newsletter {
+  text-align: center;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 600px;
+}
+
+.newsletter input {
+  padding: 0.75rem;
+  width: 250px;
+  margin-right: 10px;
+}
+
+.newsletter button {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+
+#newsletterMessage {
+  margin-top: 1rem;
+  color: green;
+  font-weight: bold;
 .hide {
   display: none;
 }

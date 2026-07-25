@@ -42,6 +42,18 @@ function productDetailsTemplate(product) {
     currency: "EUR",
   }).format(Number(product.FinalPrice) * 0.85);
 
+  document.getElementById('productPrice').textContent = product.FinalPrice;
+  
+    const discountPercent = Math.round(
+      ((product.SuggestedRetailPrice - product.FinalPrice) /
+        product.SuggestedRetailPrice) * 100
+    );
+
+    document.getElementById("discountFlag").textContent =
+      `SAVE ${discountPercent}%`;
+
+  document.getElementById('productColor').textContent = product.Colors[0].ColorName;
+  document.getElementById('productDesc').innerHTML = product.DescriptionHtmlSimple;
   document.getElementById("p-price").innerHTML = `<span class="discount-detail">$${product.SuggestedRetailPrice}</span> <span class="product-card__discount">%${discountPercentage(product)} OFF</span> $${product.FinalPrice}`;
   document.getElementById("p-color").textContent = product.Colors[0].ColorName;
   document.getElementById("p-description").innerHTML =
