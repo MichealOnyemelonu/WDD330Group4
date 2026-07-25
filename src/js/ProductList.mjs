@@ -1,16 +1,17 @@
 import { renderListWithTemplate } from "./utils.mjs";
+import { discountPercentage } from "./productDetails.mjs";
 
 function productCardTemplate(product) {
   return `
     <li class="product-card">
-      <a href="product_pages/index.html?product=${product.Id}">
+      <a href="/product_pages/index.html?product=${product.Id}">
         <img
-          src="${product.Image}"
+          src="${product.Images.PrimaryMedium}"
           alt="${product.Name}"
         />
         <h3 class="card__brand">${product.Brand.Name}</h3>
         <h2 class="card__name">${product.NameWithoutBrand}</h2>
-        <p class="product-card__price">$${product.FinalPrice}</p>
+        <p class="product-card__price"><span class="product-card__discount">%${discountPercentage(product)} OFF!</span> | $${product.FinalPrice}</p>
       </a>
     </li>
   `;
@@ -23,17 +24,17 @@ export default class ProductList {
     this.listElement = listElement;
   }
 
-  renderList(list) {
-    renderListWithTemplate(
-      productCardTemplate,
-      this.listElement,
-      list
-    );
-  }
-
-
   async init() {
+    const list =
+        await this.dataSource.getData(this.category);
+      }
+}
     const list = await this.dataSource.getData(this.category);
     this.renderList(list);
+    document.querySelector(".title").textContent = this.category;
+  }
+
+  renderList(list) {
+    renderListWithTemplate(productCardTemplate, this.listElement, list);
   }
 }
