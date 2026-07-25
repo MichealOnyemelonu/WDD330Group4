@@ -357,6 +357,7 @@ footer {
   margin-top: 1rem;
   color: green;
   font-weight: bold;
-.hide {
+ .hide {
   display: none;
+  }
 }

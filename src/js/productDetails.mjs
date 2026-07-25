@@ -12,10 +12,8 @@ export default class ProductDetails {
 
     this.renderProductDetails();
 
-    document
-      .getElementById("addToCart")
-      .getElementById("add-to-cart")
-      .addEventListener("click", this.addProductToCart.bind(this));
+    const addBtn = document.getElementById("addToCart") || document.getElementById("add-to-cart");
+    if (addBtn) addBtn.addEventListener("click", this.addProductToCart.bind(this));
   }
 
   addProductToCart() {
@@ -34,15 +32,21 @@ function productDetailsTemplate(product) {
   document.querySelector("h3").textContent = product.NameWithoutBrand;
 
   const productImage = document.getElementById("productImage");
-  productImage.src = product.Images.PrimaryLarge;
+  if (productImage) {
+    productImage.src = product.Images.PrimaryLarge;
+    productImage.alt = product.NameWithoutBrand;
+  }
+
   document.querySelector("h2").textContent =
     product.Category.charAt(0).toUpperCase() + product.Category.slice(1);
   document.querySelector("#p-brand").textContent = product.Brand.Name;
   document.querySelector("#p-name").textContent = product.NameWithoutBrand;
 
-  const productImage = document.getElementById("p-image");
-  productImage.src = product.Images.PrimaryExtraLarge;
-  productImage.alt = product.NameWithoutBrand;
+  const pImage = document.getElementById("p-image");
+  if (pImage) {
+    pImage.src = product.Images.PrimaryExtraLarge;
+    pImage.alt = product.NameWithoutBrand;
+  }
   const euroPrice = new Intl.NumberFormat("de-DE", {
     style: "currency",
     currency: "EUR",

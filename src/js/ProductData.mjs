@@ -1,36 +1,24 @@
 const baseURL = import.meta.env.VITE_SERVER_URL;
 
-function convertToJson(res) {
-  console.log("Status:", res.status);
-  console.log("Content-Type:", res.headers.get("content-type"));
-
-  return res.text().then((text) => {
-    console.log("Respuesta:", text);
-
+async function convertToJson(res) {
+  const text = await res.text();
+  try {
     return JSON.parse(text);
-  });
+  } catch (e) {
+    console.error("Failed to parse JSON response:", text);
+    throw e;
+  }
 }
 
 export default class ProductData {
-constructor() {
+  constructor(category) {
     this.category = category;
-    this.path = `../json/${this.category}.json`;
+    this.path = category ? `../json/${category}.json` : null;
   }
-async getData(category) {
-
-    const response =
-        await fetch(`${baseURL}products/search/${category}`);
-
-    const data =
-        await convertToJson(response);
-
-    return data.Result;
-
-}
-  constructor() {}
 
   async getData(category) {
-    const response = await fetch(`${baseURL}products/search/${category}`);
+    const cat = category || this.category;
+    const response = await fetch(`${baseURL}products/search/${cat}`);
     const data = await convertToJson(response);
     return data.Result;
   }
