@@ -252,7 +252,7 @@ button {
   width: 100%;
 }
 
-#p-price {
+#productPrice {
   font-size: 1.5em;
 }
 
@@ -357,6 +357,4 @@ footer {
   margin-top: 1rem;
   color: green;
   font-weight: bold;
-.hide {
-  display: none;
 }

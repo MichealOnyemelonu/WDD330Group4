@@ -11,7 +11,12 @@ function productCardTemplate(product) {
         />
         <h3 class="card__brand">${product.Brand.Name}</h3>
         <h2 class="card__name">${product.NameWithoutBrand}</h2>
-        <p class="product-card__price"><span class="product-card__discount">%${discountPercentage(product)} OFF!</span> | $${product.FinalPrice}</p>
+        <p class="product-card__price">
+          <span class="product-card__discount">
+            ${discountPercentage(product)}% OFF!
+          </span>
+          | $${product.FinalPrice}
+        </p>
       </a>
     </li>
   `;
@@ -25,10 +30,6 @@ export default class ProductList {
   }
 
   async init() {
-    const list =
-        await this.dataSource.getData(this.category);
-      }
-}
     const list = await this.dataSource.getData(this.category);
     this.renderList(list);
     document.querySelector(".title").textContent = this.category;
