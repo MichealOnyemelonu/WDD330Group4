@@ -404,3 +404,31 @@ nav a.active {
     font-weight: bold;
 
 }
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(20px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+
+}
+
+.product-card {
+
+    opacity: 0;
+
+    animation: fadeIn .6s ease forwards;
+
+}
+
