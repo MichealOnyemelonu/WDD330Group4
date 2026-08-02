@@ -9,6 +9,7 @@ const dataSource = new ProductData("tents");
 
 const product = new ProductDetails(productID, dataSource);
 
+
 //animamtion for the add to cart button
 const addToCartButton = document.querySelector("#add-to-cart");
 const quantityIncreaseButton = document.querySelector("#quantity-increase");
